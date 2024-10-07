@@ -51,8 +51,17 @@ async function fetchUserData(url: string) {
   try {
     const userData = await myCustomFetcher<UserData[]>(url);
     main_container.innerHTML = "";
-    for (const singleUser of userData) {
-      showResult(singleUser);
+
+    for (const user of userData) {
+      try {
+       
+        const detailedUser = await myCustomFetcher<UserData>(`https://api.github.com/users/${user.login}`);
+        showResult(detailedUser);
+      } catch (error) {
+        console.error(`Error fetching details for user ${user.login}:`, error);
+       
+        showResult(user);
+      }
     }
   } catch (error) {
     console.error("Error fetching user data:", error);
@@ -60,7 +69,7 @@ async function fetchUserData(url: string) {
   }
 }
 
-// Initial load of users
+// Initial load of users with details
 fetchUserData("https://api.github.com/users?per_page=10");
 
 formSubmit.addEventListener("submit", async (e) => {
@@ -70,14 +79,14 @@ formSubmit.addEventListener("submit", async (e) => {
   // console.log("Search term:", searchTerm);  
 
   if (!searchTerm) {
-    
+   
     fetchUserData("https://api.github.com/users?per_page=10");
     return;
   }
 
   try {
     main_container.innerHTML = "<p>Searching...</p>";
-    
+
     // Use search API
     const url = `https://api.github.com/search/users?q=${encodeURIComponent(searchTerm)}`;
     const searchData = await myCustomFetcher<{ items: UserData[] }>(url);
@@ -89,12 +98,11 @@ formSubmit.addEventListener("submit", async (e) => {
     } else {
       for (const user of searchData.items) {
         try {
-         
+          
           const detailedUser = await myCustomFetcher<UserData>(`https://api.github.com/users/${user.login}`);
           showResult(detailedUser);
         } catch (error) {
           console.error(`Error fetching details for user ${user.login}:`, error);
-          
           showResult(user);
         }
       }
@@ -105,13 +113,12 @@ formSubmit.addEventListener("submit", async (e) => {
   }
 });
 
-
+// // Log when the form is submitted
 // formSubmit.addEventListener('submit', (e) => {
 //   console.log('Form submitted');
 // });
 
+// // Log the input value as it changes
 // getUsername.addEventListener('input', (e) => {
 //   console.log('Current input value:', (e.target as HTMLInputElement).value);
 // });
-
-

@@ -12,143 +12,165 @@ html {
 }
 
 body {
-  background-color: #0d192b;
+  background: linear-gradient(135deg, #0c0d21, #162236);
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2rem 0;
 }
 
 a {
   text-decoration: none;
   font-size: 1.4rem;
-  color: #81a7e0;
+  color: #4fc3f7;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #80deea;
 }
 
 section {
-  width: 80%;
+  width: 90%;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
 .search-input {
   width: 100%;
-  margin: 5rem auto 0 auto;
+  margin: 4rem auto 2rem auto;
   text-align: center;
 }
 
 input {
-  width: 25rem;
-  height: 5rem;
-  border: #81a7e0 solid 0.4rem;
-  border-radius: 0.5rem;
+  width: 35rem;
+  height: 5.5rem;
+  padding: 1rem;
+  border: none;
+  border-radius: 2.5rem;
   font-size: 1.8rem;
   margin-right: 2rem;
+  background-color: #1e2b3a;
+  color: #ffffff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: 0 0 15px rgba(79, 195, 247, 0.7);
 }
 
 button {
-  padding: 1rem 2.4rem;
-  font-size: 1.6rem;
-  background-color: #1d4e89;
+  padding: 1.4rem 3.2rem;
+  font-size: 1.8rem;
+  background-color: #1a73e8;
   border: none;
   color: #fff;
-  border-radius: 0.5rem;
+  border-radius: 2.5rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(26, 115, 232, 0.4);
 }
 
 button:hover {
-  background-color: #81a7e0;
+  background-color: #4285f4;
+  box-shadow: 0 6px 18px rgba(66, 133, 244, 0.6);
 }
 
 .main_container {
   display: flex;
   flex-wrap: wrap;
-  gap: 8rem;
-  padding: 6rem 0;
+  gap: 3rem;
+  padding: 4rem 0;
   justify-content: center;
 }
 
 .card {
-  min-width: 25rem;
-  min-height: 30rem;
-  background-color: #14253d;
-  padding: 2rem;
-  border-radius: 1rem;
-  transition: all 0.3s linear;
+  max-width: 30rem;
+  background-color: #1f2d3d;
+  padding: 3rem;
+  border-radius: 2rem;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
   text-align: center;
-  color: #ffffff;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .card:hover {
   transform: translateY(-1rem);
-  box-shadow: rgba(224, 222, 233, 0.15) 0px 48px 100px 0px;
+  box-shadow: 0 10px 25px rgba(79, 195, 247, 0.3);
 }
 
 img {
-  max-width: 100%;
-  width: 15rem;
-  height: 15rem;
+  width: 10rem;
+  height: 10rem;
   border-radius: 50%;
-  margin-bottom: 1rem;
+  border: 0.4rem solid rgba(79, 195, 247, 0.8);
+  box-shadow: 0 4px 10px rgba(79, 195, 247, 0.5);
+  margin-bottom: 1.5rem;
 }
 
 .card-body h3 {
-  font-size: 2rem;
+  font-size: 2.4rem;
   font-weight: 700;
-  color: #81a7e0;
-  
+  background: linear-gradient(90deg, #80deea, #4fc3f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
 }
 
 .card-body p {
   font-size: 1.6rem;
-  display: flex;
-  color: #e6e6e6;
-  margin: 0.5rem 0;
-  align-items: flex-start;
-}
-
-.username {
-  padding-top: 1rem;
-  color: #fff;
+  color: #c5d6e5;
+  margin: 0.6rem 0;
 }
 
 .card-body .user-stats {
   display: flex;
   justify-content: space-between;
-  margin-top: 1rem;
-  
+  margin-top: 2rem;
+  padding: 0 1rem;
 }
 
 .user-stats p {
   font-size: 1.5rem;
-  color: #a9bcd1;
+  color: #b0bec5;
 }
 
 .card-footer {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 3rem;
-}
-
-.card-footer img {
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  border: 0.2rem solid white;
+  justify-content: center;
+  margin-top: 2.5rem;
 }
 
 .card-footer a {
-  font-size: 1.4rem;
-  color: #81a7e0;
+  padding: 0.8rem 1.6rem;
+  background-color: #2196f3;
+  border-radius: 2rem;
+  color: #ffffff;
+  font-size: 1.5rem;
   font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.card-footer a:hover {
+  background-color: #80deea;
 }
 
 .empty-msg {
   width: 100%;
   text-align: center;
   font-size: 2rem;
-  color: #fff;
+  color: #ffffff;
 }
 
 hr {
   height: 0.01rem;
-  border: 0.1rem solid white;
+  border: 0.1rem solid #80deea;
   margin: 1rem 0;
 }

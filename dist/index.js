@@ -34,8 +34,15 @@ async function fetchUserData(url) {
     try {
         const userData = await myCustomFetcher(url);
         main_container.innerHTML = "";
-        for (const singleUser of userData) {
-            showResult(singleUser);
+        for (const user of userData) {
+            try {
+                const detailedUser = await myCustomFetcher(`https://api.github.com/users/${user.login}`);
+                showResult(detailedUser);
+            }
+            catch (error) {
+                console.error(`Error fetching details for user ${user.login}:`, error);
+                showResult(user);
+            }
         }
     }
     catch (error) {
@@ -43,7 +50,7 @@ async function fetchUserData(url) {
         main_container.innerHTML = `<p>${error instanceof Error ? error.message : "Error fetching user data. Please try again later."}</p>`;
     }
 }
-// Initial load of users
+// Initial load of users with details
 fetchUserData("https://api.github.com/users?per_page=10");
 formSubmit.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -80,9 +87,11 @@ formSubmit.addEventListener("submit", async (e) => {
         main_container.innerHTML = `<p>${error instanceof Error ? error.message : "An error occurred during the search. Please try again."}</p>`;
     }
 });
+// // Log when the form is submitted
 // formSubmit.addEventListener('submit', (e) => {
 //   console.log('Form submitted');
 // });
+// // Log the input value as it changes
 // getUsername.addEventListener('input', (e) => {
 //   console.log('Current input value:', (e.target as HTMLInputElement).value);
 // });
