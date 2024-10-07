@@ -82,23 +82,26 @@ button:hover {
 }
 
 .main_container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr));
+  gap: 2.5rem;
   padding: 4rem 0;
   justify-content: center;
 }
 
 .card {
-  max-width: 30rem;
+  width: 100%;
+  height: 100%;
   background-color: #1f2d3d;
-  padding: 3rem;
+  padding: 2.5rem;
   border-radius: 2rem;
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
   text-align: center;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .card:hover {
@@ -107,16 +110,23 @@ button:hover {
 }
 
 img {
-  width: 10rem;
-  height: 10rem;
+  width: 9rem;
+  height: 9rem;
   border-radius: 50%;
   border: 0.4rem solid rgba(79, 195, 247, 0.8);
   box-shadow: 0 4px 10px rgba(79, 195, 247, 0.5);
-  margin-bottom: 1.5rem;
+  margin: 0 auto 1.5rem;
+  object-fit: cover;
+}
+
+.card-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .card-body h3 {
-  font-size: 2.4rem;
+  font-size: 2.2rem;
   font-weight: 700;
   background: linear-gradient(90deg, #80deea, #4fc3f7);
   -webkit-background-clip: text;
@@ -125,7 +135,7 @@ img {
 }
 
 .card-body p {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   color: #c5d6e5;
   margin: 0.6rem 0;
 }
@@ -133,19 +143,19 @@ img {
 .card-body .user-stats {
   display: flex;
   justify-content: space-between;
-  margin-top: 2rem;
+  margin-top: auto;
   padding: 0 1rem;
 }
 
 .user-stats p {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: #b0bec5;
 }
 
 .card-footer {
   display: flex;
   justify-content: center;
-  margin-top: 2.5rem;
+  margin-top: 2rem;
 }
 
 .card-footer a {
@@ -153,7 +163,7 @@ img {
   background-color: #2196f3;
   border-radius: 2rem;
   color: #ffffff;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 600;
   transition: background-color 0.3s ease;
 }
@@ -192,8 +202,11 @@ hr {
     font-size: 1.6rem;
   }
 
+  .main_container {
+    grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
+  }
+
   .card {
-    max-width: 25rem;
     padding: 2rem;
   }
 
@@ -202,17 +215,12 @@ hr {
   }
 
   .card-body p {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
 
   .card-footer a {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     padding: 0.6rem 1.4rem;
-  }
-
-  .main_container {
-    padding: 3rem 0;
-    gap: 2rem;
   }
 }
 
@@ -233,8 +241,12 @@ hr {
     font-size: 1.4rem;
   }
 
+  .main_container {
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+    gap: 2rem;
+  }
+
   .card {
-    max-width: 22rem;
     padding: 1.5rem;
   }
 
@@ -249,10 +261,5 @@ hr {
   .card-footer a {
     font-size: 1.2rem;
     padding: 0.5rem 1.2rem;
-  }
-
-  .main_container {
-    padding: 2rem 0;
-    gap: 1.5rem;
   }
 }
