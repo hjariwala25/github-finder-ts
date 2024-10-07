@@ -13,22 +13,16 @@ interface UserData {
   public_repos: number;
 }
 
-async function myCustomFetcher<T>(
-  url: string,
-  options?: RequestInit
-): Promise<T> {
+async function myCustomFetcher<T>(url: string, options?: RequestInit): Promise<T> {
   const response = await fetch(url, options);
 
   if (!response.ok) {
     if (response.status === 403) {
       throw new Error("API rate limit exceeded. Please try again later.");
     }
-    throw new Error(
-      `Network response was not ok - status: ${response.status}`
-    );
+    throw new Error(`Network response was not ok - status: ${response.status}`);
   }
   const data = await response.json();
-  // console.log("API Response:", data);  // Log the API response
   return data;
 }
 
@@ -73,10 +67,11 @@ formSubmit.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const searchTerm = getUsername.value.trim();
-  console.log("Search term:", searchTerm);  // Log the search term
+  // console.log("Search term:", searchTerm);  
 
   if (!searchTerm) {
-    main_container.innerHTML = "<p>Please enter a search term.</p>";
+    
+    fetchUserData("https://api.github.com/users?per_page=10");
     return;
   }
 
@@ -94,12 +89,12 @@ formSubmit.addEventListener("submit", async (e) => {
     } else {
       for (const user of searchData.items) {
         try {
-          // Fetch detailed user data for each search result
+         
           const detailedUser = await myCustomFetcher<UserData>(`https://api.github.com/users/${user.login}`);
           showResult(detailedUser);
         } catch (error) {
           console.error(`Error fetching details for user ${user.login}:`, error);
-          // If we can't get detailed data, show the basic info we have
+          
           showResult(user);
         }
       }
@@ -110,12 +105,13 @@ formSubmit.addEventListener("submit", async (e) => {
   }
 });
 
-// Log when the form is submitted
-formSubmit.addEventListener('submit', (e) => {
-  console.log('Form submitted');
-});
 
-// Log the input value as it changes
-getUsername.addEventListener('input', (e) => {
-  console.log('Current input value:', (e.target as HTMLInputElement).value);
-});
+// formSubmit.addEventListener('submit', (e) => {
+//   console.log('Form submitted');
+// });
+
+// getUsername.addEventListener('input', (e) => {
+//   console.log('Current input value:', (e.target as HTMLInputElement).value);
+// });
+
+

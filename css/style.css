@@ -17,14 +17,13 @@ body {
 
 a {
   text-decoration: none;
-  font-size: 1.2rem;
-  color: white;
+  font-size: 1.4rem;
+  color: #81a7e0;
 }
 
 section {
   width: 80%;
   margin: 0 auto;
-  /* margin: 10rem; */
 }
 
 .search-input {
@@ -45,6 +44,16 @@ input {
 button {
   padding: 1rem 2.4rem;
   font-size: 1.6rem;
+  background-color: #1d4e89;
+  border: none;
+  color: #fff;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #81a7e0;
 }
 
 .main_container {
@@ -56,24 +65,42 @@ button {
 }
 
 .card {
-  min-width: 20rem;
-  min-height: 20rem;
+  min-width: 25rem;
+  min-height: 30rem;
   background-color: #14253d;
-  padding: 1rem;
+  padding: 2rem;
   border-radius: 1rem;
   transition: all 0.3s linear;
+  text-align: center;
+  color: #ffffff;
+}
 
-  &:hover {
-    transform: translateY(-2rem);
-    box-shadow: rgba(224, 222, 233, 0.15) 0px 48px 100px 0px;
-  }
+.card:hover {
+  transform: translateY(-1rem);
+  box-shadow: rgba(224, 222, 233, 0.15) 0px 48px 100px 0px;
 }
 
 img {
   max-width: 100%;
-  width: 22rem;
-  height: auto;
-  border-radius: 1rem;
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.card-body h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #81a7e0;
+  
+}
+
+.card-body p {
+  font-size: 1.6rem;
+  display: flex;
+  color: #e6e6e6;
+  margin: 0.5rem 0;
+  align-items: flex-start;
 }
 
 .username {
@@ -81,16 +108,23 @@ img {
   color: #fff;
 }
 
-hr {
-  height: 0.01rem;
-  border: 0.1rem solid white;
+.card-body .user-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  
+}
+
+.user-stats p {
+  font-size: 1.5rem;
+  color: #a9bcd1;
 }
 
 .card-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 3rem 0 0 0;
+  margin-top: 3rem;
 }
 
 .card-footer img {
@@ -100,9 +134,21 @@ hr {
   border: 0.2rem solid white;
 }
 
+.card-footer a {
+  font-size: 1.4rem;
+  color: #81a7e0;
+  font-weight: 600;
+}
+
 .empty-msg {
   width: 100%;
   text-align: center;
   font-size: 2rem;
   color: #fff;
+}
+
+hr {
+  height: 0.01rem;
+  border: 0.1rem solid white;
+  margin: 1rem 0;
 }
